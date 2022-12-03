@@ -8,6 +8,9 @@ import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 
 /**
@@ -35,6 +38,7 @@ public class Cafeteria extends PanacheEntity {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "cafeteria_id")
+    @JsonBackReference
     private List<Cafe> cafes;
 
     public String getNome() {

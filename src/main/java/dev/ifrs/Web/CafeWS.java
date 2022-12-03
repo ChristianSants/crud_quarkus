@@ -104,4 +104,13 @@ public class CafeWS {
         return c;
     }
 
+    @GET
+    @Path("/list/user/{id}")
+    // @RolesAllowed({"User"})
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<Cafe> listByUserId(@PathParam("id") Long id) {
+        // 4 - O método do Panache `findById` recupera um objeto da classe User.
+        return Cafe.find("user_id", id).list();
+    }
+
 }
